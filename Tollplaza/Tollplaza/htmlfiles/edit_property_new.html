@@ -1,0 +1,280 @@
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 2 | Starter</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  
+  {% load static %}
+  <!-- Bootstrap 3.3.6 -->
+  
+  <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}"/>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'font-awesome.min.css' %}"/>
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="{% static 'ionicons.min.css' %}"/>
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'AdminLTE.min.css' %}"/>
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect.
+  -->
+  <link rel="stylesheet" href="{% static 'skin-dark-blue.css' %}"/>
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="hold-transition skin-blue layout-top-nav  ">
+
+
+  <!-- Main Header -->
+  <header class="main-header">
+    <nav class="navbar navbar-static-top" role="navigation">
+<script>
+function startTime() {
+	var monthno = new Array("01","02","03","04","05","06","07","08","09","10","11","12");
+    var today = new Date();
+    var day = today.get
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+    "Date/Time" + ":"+ " " + today.getDate() + "/" +monthno[today.getMonth()] + "/" + today.getFullYear()+ " " + "["+ h + ":" + m + ":" + s +"]";
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>  
+
+
+<script>
+function myFunction() {
+    window.print();
+}
+</script>
+<script>
+function isFutureDate(idate){
+	
+    var today = new Date().getTime(),
+        idate = idate.split("/");
+    
+    idate = new Date(idate[2], idate[1] - 1, idate[0]).getTime();
+    return (today - idate) < 0 ? true : false;
+}
+function checkDate(dat){
+    //alert(dat)
+    var idate = document.getElementById(dat),
+        resultDiv = document.getElementById("datewarn"),
+        dateReg = /(0[1-9]|[12][0-9]|3[01])[\/](0[1-9]|1[012])[\/]201[4-9]|20[2-9][0-9]/;
+    
+	
+	
+    if(dateReg.test(idate.value)){
+        if(isFutureDate(idate.value)){
+            
+           idate.style.background = "#99ff99";
+        } else {
+            
+            idate.style.background = "#ff4d4d";
+        }
+    } else {
+        
+        idate.style.background = "#ff4d4d";
+    }
+}
+
+</script>				
+
+<style>
+input:invalid {
+  border: 1px solid red;
+  background-color: #ff4d4d;
+  color : white;
+}
+
+input:valid {
+  border: 1px solid green;
+}
+</style>    
+     <form method="POST" id="submit" name="submit" action="/save_edit_property/">
+  <input id="owner" value="{{owner_id}}" name="owner" type="hidden">
+              <input type="hidden"  name="Username" id="Username" value={{user}} >
+              <input id="Password" value="{{password}}" name="Password" type="hidden">
+              <input id="newID" value="{{ownerID}}" name="newID" type="hidden">
+                <input type="hidden" id="Permit_va" name="Permit_va" value="{{Permit_va}}"  >
+
+      
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+		<div class="navbar-form navbar-left" role="search">
+            <div class="col-sm-12" style="color:white">
+              <img  src = "{% static 'tamillogo.png' %}" width="60" height="50" class="img-circle" alt="User Image">
+			  Vehicle Direction <input type="text" class="form-control btn round-large" style = "width:150px" placeholder="Direction">
+			  Lane No <input type="text" id="lane_N" name="lane_N" value="{{lane_N}}" class="form-control btn round-large" style = "width:100px" placeholder="Lane no">
+			  Location <input type="text" id="address" name="address" value="{{address}}" class="form-control btn round-large" style = "width:150px" placeholder="Location">
+			  Officername <input type = "text" id="RTO" name="RTO" value="{{RTO}}" class="form-control btn round-large" style = "width:150px"placeholder="Username">
+              <body onload="startTime()">
+			  <a id="txt" style = "color:white"></a>
+			  <button   class="btn btn-white bg-black round-large">log out</button>
+			</div>
+          </div>
+	
+        </ul>
+	
+      </div>
+    </nav>
+  </header>
+  </body>
+
+<div class="content body">
+    <div class="col-sm-12">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Vehicle Details</h3>
+          
+			<div class="box-body pad table-responsive">
+   
+              <table class="table table-bordered text-center bg-blue disabled">
+                <tr>
+				<th>Vehicle Reg No<br><input type="text" id="VehicleNum" name="VehicleNum" value="{{VehicleNum}}" class=" form-control btn round-large" style = "width:180px" placeholder="Vehicle Reg No"></input></th>
+				<th>Transaction ID<br><input type="text" id="TransactionID" name="TransactionID" value="{{TransactionID}}" class=" form-control btn round-large" style = "width:180px"placeholder="Vehicle Reg No"></input></th>
+				<th>Vehicle class <br><input type="text" id="Vehicle_class" name="Vehicle_class" value="{{Vehicle_class}}" class=" form-control btn round-large" style = "width:180px"placeholder="Vehicle Reg No"></input>
+				<th><img src = "{% static 'image1.jpg' %}" style = "heigth:30px;width:120px"></th>
+				</tr>
+				</table>
+			</div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </body>
+ 
+  
+  <div class="col-sm-6" action="" id="theFrm">
+
+			<div class="color-palette-set">
+              <table class="bg-gray  color-palette table table-bordered text-center ">
+                <tr>
+				<th class = "bg-blue">VEHICLE DIMENSION </th> 
+				<th class = "bg-blue">DATABASE </th> 
+				</tr>
+				<tr>
+				<th>Height <br><input type ="number" id="sensor_h" name="sensor_h"   min = "1"   value = "{{sensor_h}}" <= "{{Diemension_h}}" class=" btn round-large" style = "width:150px" ></input></th>
+				<th>Height check <br><input type="text" id="Diemension_h" name="Diemension_h" value="{{Diemension_h}}" class=" btn border-blue round-large" style = "width:150px"></input></th> 
+				</tr>
+				<tr>
+				<th>Width <br><input type ="number" id="sensor_b"  name="sensor_b"  value="{{sensor_b}}" min = "1" max = "25" class=" btn round-large" style = "width:150px" ></input></th>
+				<th>Width check<br> <input type="text" id="Diemension_b" name="Diemension_b" value="{{Diemension_b}}" class=" btn border-blue round-large" style = "width:150px"></input></th> 
+				</tr>
+				<tr>
+				<th>Length <br><input type ="number" id="sensor_le"  name="sensor_le" value="{{sensor_le}}" min = "1" max = "25" class=" btn round-large" style = "width:150px" ></input></th>
+				<th>Length check <br><input type="text" id="Diemension_l" name="Diemension_l" value="{{Diemension_l}}" class=" btn border-blue round-large" style = "width:150px"></input></th> 
+				</tr>
+				<tr>
+				<th>Axel Count <br><input type ="number" id="number" name="heigth" min = "1" max = "25" class=" btn round-large" style = "width:150px" ></input></th>
+				<th>Axel Count check<br> <input type="text" id="AXLE_Count" name="AXLE_Count" value="{{AXLE_Count}}" class=" btn border-blue round-large" style = "width:150px"></input></th>
+				</tr>
+				<tr>
+				<th>Weight <br><input type="text" class=" btn border-blue round-large" style = "width:150px"></input></th>
+				<th>Weight check<br> <input type ="number" id="weight"  name="weight" value="{{weight}}" min = "1" max = "200" class=" btn round-large" style = "width:150px" ></input></th> 
+				</tr>
+	
+				</table>
+        </div>
+
+  </div>
+  <div class="col-sm-3">
+			<div class="color-palette-set">
+              <table class=" bg-gray color-palette table table-bordered text-center">
+                <tr>
+				<th class = "bg-blue">VEHICLE VALIDITY CHECK </th> 
+				
+				</tr>
+				<tr>
+				<th>Fitness <br><input type="text"  id="Fitness_va"  name="Fitness_va" value="{{Fitness_va}}" placeholder="DD/MM/YYYY" class=" btn round-large" style = "width:150px" onkeyup="checkDate('date1')" /></th> 
+				</tr>
+				<tr>
+				<th>Pollution <br><input type="text" name="Pollution_va" id="Pollution_va" value="{{Pollution_va}}" placeholder="DD/MM/YYYY" class=" btn round-large" style = "width:150px" onkeyup="checkDate('date2')" /></th>
+				</tr>
+				<th>Tax <br><input type="text" name="date" id="date3" placeholder="DD/MM/YYYY" class=" btn round-large" style = "width:150px" onkeyup="checkDate('date3')" /></th>
+				<tr>
+				<th>Permit <br><input type="text"  id="Permit_va" name="Permit_va" value="{{Permit_va}}" placeholder="DD/MM/YYYY" class=" btn round-large" style = "width:150px" onkeyup="checkDate('date4')" /></th>
+				</tr>
+				<tr>
+				<th><br><br><br></th>
+				</tr>
+				</table>
+			
+        </div>
+        </div>
+    
+  <br>
+  <a href = "/display_homepage/" type="button" class="btn btn-white bg-black round-large " style= "width:100px">
+  Clear</a>
+ 
+ <br>
+ <br>
+  <button class="btn btn-white bg-black round-large " type="submit" style= "width:100px" >
+  Submit
+  </button></form>
+  <div class="col-sm-12">
+      <div class="box box-danger">
+        <div class="box-header with-border">
+          <h3 class="box-title">FEES DETAILS</h3>
+          
+			<div class="box-body pad table-responsive">
+   <form Name="calc">
+              <table class="table table-bordered text-center bg-blue disabled">
+                <tr>
+				<th colspan=4>FINE AMOUNT<br><input type="text" name="display1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" type="text"  class=" form-control btn round-large" style = "width:150px;height:50px;font-size:34px" ></input></th>
+				<th colspan=4>  PAID AMOUNT <br><input name="display2" onkeypress="return event.charCode >= 48 && event.charCode <= 57" type="text"  class=" form-control btn round-large" style = "width:150px;height:50px;font-size:34px" ></input></th>
+				<th><br><input type=button value="=" OnClick="calc.display3.value = calc.display2.value - calc.display1.value " class="  btn round-large" style = "font-size:24px;color:black"/></th>
+				<th colspan=4> 	RETURN AMOUNT   <br><input name="display3" onkeypress="return event.charCode >= 48 && event.charCode <= 57" type="text"  class=" form-control btn round-large" style = "width:150px;height:50px;font-size:34px" ></input></th>
+				
+				</tr>
+				</table>
+			</div>
+        </div>
+      </div>
+    </div
+   
+  </html>
+
+  
+  
+

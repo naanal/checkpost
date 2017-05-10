@@ -1,0 +1,132 @@
+{% load static %}
+<html> 
+<head> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script  src="{%static 'jquery-1.7.2.min.js' %}"></script> 
+<script  src="{% static  'functions.js' %}"></script>
+<link href="{% static 'bootstrap.css' %}" >
+<link href="{% static 'style.css' %}" >
+<link href="{% static 'font-awesome.min.css' %}" >
+
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+</head> 
+<style>
+
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+	font-size:18px;
+	height:40px'
+}
+
+th, td {
+    text-align: left;
+	font-size:18px;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #e5e8e1}
+
+th {
+    background-color: #4CAF50;
+	font-size:24px;
+    color: white;
+}
+</style>
+<body> 
+<div class = "row">
+<div class  = "col-xs-8">
+</div>
+<div class  = "col-xs-4">
+
+<button id = "btnAdd" class="form-control btn round-large"  style = " color:#ffffff; background-color: #191919;border-color: #e5e5e5; width:160px;height:40px;font-size:18px">Add Records <i class="fa fa-plus-square"></i></button>
+</div>
+</div>
+<br>
+<div class = "row">
+<div class = "col-xs-2">
+</div>
+<div class = "col-xs-8">
+<table id="tblData" >	
+<thead> 
+ 
+ <tr> 
+ <th >User Name</th> 
+ <th>Lane No</th>
+ <th>User Location</th> 
+ 
+ <th></th> 
+ </tr> 
+ </thead> 
+ <tbody> 
+ </tbody>
+ </table> 
+ </div>
+ <div class = "col-xs-2">
+</div>
+</div>
+
+<script>
+function Add(){
+		$("#tblData tbody").append(
+				"<tr>"+ 
+				"<td><input type='text' style='font-size:18px;width:230px;height:40px'/></td>"+ 
+				"<td><select name='option' style='font-size:18px;width:230px;height:40px'><option value='' disabled selected>select lane</option><option value='1'> Lane 1 </option><option value='2'> Lane 2 </option><option value='3'> Lane 3 </option><option value='4'> Lane 4 </option><option value='5'> Lane 5 </option><option value='6'> Lane 6 </option><option value='7'> Lane 7 </option><option value='8'> Lane 8 </option><option value='9'> Lane 9 </option></select></td>"+  
+				"<td><button class='btnSave form-control btn round-large' style='color:black;background-color:#b29af4;border-color:#191919;width:90px;height:40px;font-size:18px'>Save <i class='fa fa-floppy-o'></i></button><button class='btnDelete form-control btn round-large' style='border-color:#191919;width:90px;height:40px;font-size:18px;background-color:#f46e6e;color:black'>Delete <i class='fa fa-close'></i></button></td>"+ 
+				"</tr>");
+				$(".btnSave").bind("click", Save);	
+				$(".btnDelete").bind("click", Delete); 
+}; 
+
+
+function Save(){
+		var par = $(this).parent().parent(); //tr
+		var tdName = par.children("td:nth-child(1)"); 
+		var tdPhone = par.children("td:nth-child(2)");
+		
+		var tdButtons = par.children("td:nth-child(3)");
+		
+		tdName.html(tdName.children("input[type=text ]").val()); 
+		tdPhone.html(tdPhone.children("input[type=text]").val()); 
+		 
+		tdButtons.html("<button class='btnEdit form-control btn round-large' style='border-color:#191919;width:90px;height:40px;font-size:18px;background-color:#91d892;color:black'>Edit <i class='fa fa-pencil'></i></button><button class='btnDelete form-control btn round-large' style='border-color:#191919;width:90px;height:40px;font-size:18px;background-color:#f46e6e;color:black'>Delete <i class='fa fa-close'></i></button></td>");
+
+		$(".btnEdit").bind("click", Edit);
+		$(".btnDelete").bind("click", Delete);
+};
+
+function Edit(){
+		var par = $(this).parent().parent(); //tr 
+		var tdName = par.children("td:nth-child(1)"); 
+		var tdPhone = par.children("td:nth-child(2)");
+		
+		var tdButtons = par.children("td:nth-child(3)");
+		
+		tdName.html("<input type='text' id='txtName' value='"+tdName.html()+"'/>");
+		tdPhone.html("<select name='option' style='font-size:18px;width:230px;height:40px'><option value='' disabled selected>select lane</option><option value='1'> Lane 1 </option><option value='2'> Lane 2 </option><option value='3'> Lane 3 </option><option value='4'> Lane 4 </option><option value='5'> Lane 5 </option><option value='6'> Lane 6 </option><option value='7'> Lane 7 </option><option value='8'> Lane 8 </option><option value='9'> Lane 9 </option></select></td>");
+		 
+		tdButtons.html("<button class='btnSave form-control btn round-large' style='color:black;background-color:#b29af4;border-color:#191919;width:90px;height:40px;font-size:18px'>Save <i class='fa fa-floppy-o'></i></button>"); 
+		
+		$(".btnSave").bind("click", Save); 
+		$(".btnEdit").bind("click", Edit); 
+		$(".btnDelete").bind("click", Delete); 
+};
+
+function Delete(){
+		var par = $(this).parent().parent(); //tr
+		par.remove(); 
+}; 
+
+
+
+
+
+
+
+
+</script>
+
+ </body> 
+ </html>

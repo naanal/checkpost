@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<header>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>toll system</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}" />
+<link rel="stylesheet" href="{% static 'Tollapp/bootstrap.min.css'%}"/>
+  <script src="{% static 'Tollapp/bootstrap.min.js'%}"/></script>
+<script src="C:\Users\p\Music\Daily work\dec 2016\26-dec\jquery.min.js"></script>
+ 
+<div ng-app="" >
+<div ng-style="mystyle">
+<div class="w3-row" style="background-color:black;color:white;padding:10px;font-size:12px;">
+  <div class="w3-col w3-container" style="width:90%">
+  <p><img src="{% static 'tnlogo.jpg'%}" style="width:60px;height:30px";/>
+  User Name  <input type = "text" id="Tollbooth_user" name="Tollbooth_user" value="{{ Tollbooth_user}}" style="width:150px" class="w3-btn w3-white w3-border w3-round-large">
+Transaction Id <input type = "text" id="TransactionID",name="TransactionID" value="{{ TransactionID}}" style="width:150px" class="w3-btn w3-white w3-border w3-round-large"> 
+Lane No <input type ="text" id="sensor_la"  name="sensor_la" value="{{sensor_la}}" style="width:80px"class="w3-btn w3-white w3-border w3-round-large"> 
+<script language = "JavaScript">
+var now = new Date();
+var monthno = new Array("01","02","03","04","05","06","07","08","09","10","11","12");
+document.write("Date/Time :"  + " " + now.getDate() + "/" +monthno[now.getMonth()] + "/" + now.getFullYear()+ " "+ "[" + now.getHours()+":" + now.getMinutes()+":" + now.getSeconds()+ "]");
+ </script></p>
+ </div>
+  <div class="w3-col w3-container" style="width:10%"><p><form><button class="w3-btn w3-white w3-border w3-round-large " method="post" action="/mainpage/">Logout</button></p></div>
+</form></div>
+
+</script>
+</header>
+</div>
+<body>
+<div class= "w3-dark-grey"style="color:white;padding:5px;font-size:12px;">
+
+  <P>vehicle Reg NO <input type = "text" id="VehicleNum"  name="VehicleNum"  value="{{ VehicleNum }}"  style="width:150px" class="w3-btn w3-white w3-border w3-round-large"> 
+  Vehicle direction 
+  <select style="width:150px"class="w3-btn w3-white w3-border-blue w3-round-large" name="option">
+    <option value="" disabled selected>select direction</option>
+    <option value="1"> TN-to-KA </option>
+    <option value="2"> KA-to-TN </option>
+  </select>
+  Vehicle class	 <input type = "text"  id="Vehicle_class" name="Vehicle_class" value="{{ Vehicle_class}}" style="width:150px" class="w3-btn w3-white w3-border w3-round-large">
+  <button class="w3-btn w3-white w3-black w3-border w3-round-large ">Submit</button>
+  </p>
+  
+  Weight <input type = "text"style="width:150px" class="w3-btn w3-white w3-border w3-round-large"> <input type = "text"style="width:150px" class="w3-btn w3-white w3-border w3-round-large">
+ 
+  </div>
+  
+ 
+ <div style ="font-size:12px;">
+<div class="w3-row">
+  <div class="w3-col w3-light-blue w3-container" style="width:23%">
+  <p>VEHICLE DIMENSION</p>
+	<label>Height</label>
+    <input class="w3-input w3-border w3-round-xlarge" type="Number" id="sensor_h" name="sensor_h" value="{{sensor_h}}"  placeholder="" style = "width:150px">
+    <label>Width</label>
+    <input class="w3-input w3-border w3-round-xlarge" type="text" id="sensor_b" name="sensor_b" value="{{sensor_b}}"  placeholder="" style = "width:150px">
+    <label>Length</label>
+    <input class="w3-input w3-border w3-round-xlarge" type="text"  id="sensor_le" name="sensor_le" value="{{sensor_le}}" placeholder="" style = "width:150px">
+    <label>AxelCount</label>
+    <input class="w3-input w3-border w3-round-xlarge" type="text" placeholder="" style = "width:150px">
+	<br>
+  </div>
+  <p id="demo"></p>
+
+  <div class="w3-col w3-light-blue w3-container" style="width:23%">
+    <p>DATABASE CHECK</p>
+  <label>Height check</label>
+    
+    <input class="w3-input w3-border w3-round-xlarge" type="text" id="Diemension_h" name="Diemension_h" value="{{Diemension_h }}" placeholder="" style = "width:150px">
+    
+    function 
+    <script>
+    <font backgroundcolor="red">
+    if ( {{sensor_h}}<={{Diemension_h}} ) {
+        document.getElementById("demo").innerHTML = " color:red";
+    }
+    </script>
+
+    <label>Width check</label>
+    <input class="w3-input w3-border w3-round-xlarge" type="text" id="Diemension_b" name="Diemension_b" value="{{Diemension_b}}" placeholder="" style = "width:150px">
+    <label>Length check</label>
+    <input class="w3-input w3-border w3-round-xlarge" type="text" id="Diemension_l"  name="Diemension_l" value="{{Diemension_l}}" placeholder="" style = "width:150px">
+    <label>AxelCount check</label>
+    <input class="w3-input w3-border w3-round-xlarge" type="text" id="AXLE_C" name="AXLE_C" value="{{AXLE_C}}" placeholder="" style = "width:150px">
+	<br>
+  </div>
+  <div class="w3-col w3-white w3-container" style="width:9%">
+  <br>
+  <br>
+  <br>
+  <br>
+  <p><button class="w3-btn w3-white w3-border w3-black w3-round-large ">Clear</button></p>
+  <p><button class="w3-btn w3-white w3-border w3-black w3-round-large ">Print</button></p>
+  </div>
+  <div class="w3-col w3-light-blue w3-container" style="width:23%">
+  <p>VEHICLE VALIDITY</p>
+  <label>Fitness</label>
+    <input class="w3-input w3-border w3-round-xlarge" type="text" placeholder="" style = "width:150px">
+    <label>Pollution</label>
+    <input class="w3-input w3-border w3-round-xlarge" type="text" placeholder="" style = "width:150px">
+    <label>Tax</label>
+    <input class="w3-input w3-border w3-round-xlarge" type="text" placeholder="" style = "width:150px">
+    <label>Permit</label>
+    <input class="w3-input w3-border w3-round-xlarge" type="text" placeholder="" style = "width:150px">
+	<br>
+  </div>
+  <div class="w3-col w3-light-blue w3-container" style="width:22%">
+    <p>DATABASE CHECK</p>
+  <label> Fitness check</label>
+    <input class="w3-input w3-border w3-round-xlarge" type="text" id="Fitness_va" name="Fitness_va" value="{{Fitness_va}}" placeholder="" style = "width:150px">
+    <label>Pollution check</label>
+    <input class="w3-input w3-border w3-round-xlarge" type="text" id="Pollution_va" name="Pollution_va" value="{{Pollution_va}}" placeholder=""  id=style = "width:150px">
+    <label>Tax check</label>
+    <input class="w3-input w3-border w3-round-xlarge" type="text" id="" placeholder="" style = "width:150px">
+    <label>Permit check</label>
+    <input class="w3-input w3-border w3-round-xlarge" type="text" id="Permit_va" name="Permit_va" value="{{Permit_va}}" placeholder="" style = "width:150px">
+	<br>
+  </div>
+  <br>
+  <br>
+</div>
+  
+  
+  </div>
+
+
+</div>
+</div>
+</div>
+	
+
+</body>
+
+</html>

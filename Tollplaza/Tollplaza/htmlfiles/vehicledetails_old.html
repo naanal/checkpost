@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+
+<title>Login</title>
+
+<style>
+.css_button {
+    font-family:Arial;
+	font-size: 20px;
+    font-weight: normal;
+    <!-- text-decoration: inherit; -->
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    border: 1px solid #ffffff;
+    padding: 6px 20px;
+    cursor: pointer;
+    color: #FFFFFF;
+    display: inline-block;
+    background-color:#000000;
+	align:center;
+	width:100px;
+	height:35px;
+        margin-left: -4%;
+
+}
+
+.css_button:hover {
+    background-color:;
+}
+
+.css_button:active {
+    position:relative;
+    top: 5px;
+}
+</style>
+
+<style>
+.css_username {
+	width: 300px; 
+	height:40px; 
+	font-size:15px; 
+	border:1px solid #CDCCCC; 
+	background:#FFFFFF; 
+	-webkit-border-radius: 5px 5px 5px 5px; 
+	-moz-border-radius: 5px 5px 5px 5px ; 
+	border-radius: 5px 5px 5px 5px; 
+	float: left; 
+	background: url(C:\\Users\\ADMIN\\Desktop\\2 June\\MAIL_ICON.jpg) 
+	no-repeat scroll 7px 7px; 
+	padding-left:30px; 
+	background-repeat: no-repeat;
+}
+</style>
+
+<style>
+.css_password {
+	width: 300px; 
+	height:40px; 
+	font-size:15px; 
+	border:1px solid #CDCCCC; 
+	background:#FFFFFF; 
+	-webkit-border-radius: 5px 5px 5px 5px; 
+	-moz-border-radius: 5px 5px 5px 5px ; 
+	border-radius: 5px 5px 5px 5px; 
+	float: left; 
+	background: url(C:\\Users\\ADMIN\\Desktop\\password.jpg) 
+	no-repeat scroll 7px 7px; 
+	padding-left:35px; 
+	background-repeat: no-repeat;
+}
+a:active {
+    background-color: #FF704D;
+}
+</style>
+       <style>         
+.a {
+    color:black;
+}
+</style>
+<script>
+history.pushState({ page: 1 }, "title 1", );
+window.onhashchange = function (event) {
+window.location.hash = "Welcome";
+
+};
+</script>
+
+</head>
+<body style="font-family:Helvetica;background-color:#F2F2F2; ">
+<center>
+<br>
+<center><h2>VEHICLE SEARCH</h2></center>
+
+<div style="width:350px; height:250px; background-color:#aebce5; margin-top:125px; padding: 20px;" >
+{% load static %}
+
+<br>
+<font size="4" face="Arial" color="Red">{{flag}}</font>
+<br>
+<form method="POST" id="submitconfig" name="submitconfig" action="/edit_property/">
+
+<input id="Username" name="Username" value="{{Username}}" type="hidden"></input>
+<input name="Password" value="{{Password}}" type="hidden" />
+<input   required id="VehicleNumber" name="VehicleNumber"  value="{{VehicleNumber}}" placeholder="Vehicle Number" class="css_username" /> <br></br><br>
+
+
+
+<!-- <input type="checkbox" name="option" id="option" value='1' onchange="changeType()">Remember Me<br /> -->
+<br><br><br>
+<input type="submit" class="css_button" value="Search" style="bg:#000000"></input>
+</form>
+
+</div>
+</center>
+
+</body>
+</html>

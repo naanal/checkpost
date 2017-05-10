@@ -1,0 +1,99 @@
+ <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script> 
+
+{% csrf_token %}
+Username: <input type='text' name='username' id='username' />
+<br>
+Password: <input type='password' name='password' id='password' />
+<br>
+<input type='submit' value='Login' id='login_form' />
+
+<script>
+
+
+$("#login_form").click(function(){
+  var username = $("#username").val();
+  var password = $("#password").val();
+  $.post("/get_auth_token/", {"username": username, "password": password})
+      .success(function(data) {
+        var token = data["token"];
+        console.log(token)
+
+    $.ajax({
+      url: "http://localhost:8000/VehicleCount/DL09ML6778",
+      type: 'GET',
+      dataType: 'json',
+      contentType:'application/x-www-form-urlencoded',
+      //data:{'User_Name':username,'Password':password},
+      csrfmiddlewaretoken:'{{csrf_token }}',
+      headers: { 'Authorization': 'Token ' +token },
+      success: function(result){
+        console.log("authorized users")
+        document.cookie='token='+token+";path=/";
+        var res=result[0]['Registration_date']
+        console.log(res)
+        
+        //console.log("hai")
+        //window.location.href="http://localhost:8000/VehicleCount/DL09ML6778"
+        //$("span").html(result);
+      
+      },
+      'error': function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log("unauthorized users")
+                    
+        }
+    });
+  });
+});
+
+//   $("#login_form").on("click", function(e) {
+//     console.log("username")
+//     var username = $("#username").val();
+//     var password = $("#password").val();
+
+// $.ajax({
+//                   'url': /login/,
+//                   'type': 'POST',
+//                   'content-Type': 'x-www-form-urlencoded',
+//                   'dataType': 'json',
+//                   'data':{'username':username,'password':password},
+//                   'headers': {
+//                     'Authorization': 'Token ' + '82246e129cafc4314c0fd8e2e007a8c24095f5a9'
+//                   },
+                   
+//                   'data': requestPayload,
+//                   'success': function (data) {
+//                     console.log(username)
+                    
+//                   },
+//                   'error': function (XMLHttpRequest, textStatus, errorThrown) {
+//                     console.log("unauthorized users")
+                    
+//                   }
+//               });
+
+        
+// });
+</script>
+
+<!--
+
+$.ajax({
+                  'url': /login/,
+                  'type': 'POST',
+                  'content-Type': 'x-www-form-urlencoded',
+                  'dataType': 'json',
+                  'headers': {
+                    'Authorization': 'Token ' + '82246e129cafc4314c0fd8e2e007a8c24095f5a9'
+                  },
+                  'data': requestPayload,
+                  'success': function (result) {
+                    console.log("successfully authenticated!")
+                    
+                  },
+                  'error': function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log("unauthorized users")
+                    
+                  }
+              });
+
+-->

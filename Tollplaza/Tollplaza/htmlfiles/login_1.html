@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Login</title>
+
+<style>
+.css_button {
+    font-family:Arial;
+	font-size: 20px;
+    font-weight: normal;
+    <!-- text-decoration: inherit; -->
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    border: 1px solid #757373;
+    padding: 6px 20px;
+    cursor: pointer;
+    color: #FFFFFF;
+    display: inline-block;
+    background-color:#757373;
+	align:center;
+	width:100px;
+	height:35px;
+        margin-left: -4%;
+
+}
+
+.css_button:hover {
+    background-color:;
+}
+
+.css_button:active {
+    position:relative;
+    top: 1px;
+}
+</style>
+
+<style>
+.css_email {
+	width: 300px; 
+	height:40px; 
+	font-size:15px; 
+	border:1px solid #CDCCCC; 
+	background:#FFFFFF; 
+	-webkit-border-radius: 5px 5px 5px 5px; 
+	-moz-border-radius: 5px 5px 5px 5px ; 
+	border-radius: 5px 5px 5px 5px; 
+	float: left; 
+	background: url(C:\\Users\\ADMIN\\Desktop\\2 June\\MAIL_ICON.jpg) 
+	no-repeat scroll 7px 7px; 
+	padding-left:30px; 
+	background-repeat: no-repeat;
+}
+</style>
+
+<style>
+.css_password {
+	width: 300px; 
+	height:40px; 
+	font-size:15px; 
+	border:1px solid #CDCCCC; 
+	background:#FFFFFF; 
+	-webkit-border-radius: 5px 5px 5px 5px; 
+	-moz-border-radius: 5px 5px 5px 5px ; 
+	border-radius: 5px 5px 5px 5px; 
+	float: left; 
+	background: url(C:\\Users\\ADMIN\\Desktop\\password.jpg) 
+	no-repeat scroll 7px 7px; 
+	padding-left:35px; 
+	background-repeat: no-repeat;
+}
+a:active {
+    background-color: #FF704D;
+}
+</style>
+       <style>         .a {
+    color:black;
+}
+</style>
+<script>
+history.pushState({ page: 1 }, "title 1", "#Welcome");
+window.onhashchange = function (event) {
+window.location.hash = "Welcome";
+
+};
+</script>
+
+</head>
+<body style="font-family:Helvetica;background-color:#F2F2F2; ">
+<center>
+<div style="width:350px; height:300px; background-color:#F2F2F2; margin-top:125px; padding: 20px;" >
+{% load static %}
+<img src="{% static "bizpit_logo.png" %}"  style="margin-left:1%;height:85px;width:26%;margin-top:-2.9%;" />
+<center><font size="5" face="Arial">TOLLPLAZA</font></center>
+
+<hr color="#FFFFFF">
+<br/>
+<font size="4" face="Arial" color="Red">{{flag}}</font>
+<form method="post" name="submitconfig" action="/display_homepage/">
+<input  type="text" required id="Username" name="Username"  placeholder="User Name" class="css_email" /> <br></br><br />
+<input  type="password" required id="Password" name="Password" placeholder="Password" class="css_password" style="background-color:#FFFFFF;"/> <br></br><br />
+<div  style="float:left; margin-right:0px;background-color:#757373;height:35px;width:40%;border-radius:5px;">
+ <input type="radio" name="owner" style="margin-top:7%;margin-left:-35%;font-size:20px;color:#FFFF;" value="Owner" checked="checked" >User
+</div>
+<div style="float:right; margin-right:15px;background-color:#757373;height:35px;width:40%;border-radius:5px;">
+ <input type="radio" name="owner" style="margin-top: 7%;font-size:20px;color:#FFFFFF;" value="Super-Owner"   > Officer</div>
+<br></br>
+<!-- <input type="checkbox" name="option" id="option" value='1' onchange="changeType()">Remember Me<br /> -->
+<br />
+
+<a href="/reset_password/" style="float:left; margin-right:0px;">Reset Password?</a>
+
+<br><br><br>
+<input type="submit" class="css_button" value="LOGIN" style="">
+</form>
+
+</div>
+</center>
+
+</body>
+</html>

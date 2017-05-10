@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+
+<title>Login</title>
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+     
+    <title>Speak Multipager Responsive Template</title>
+	
+	 {% load static %}
+  
+  
+  <link rel="stylesheet" href="{% static 'bootstrap.css' %}"/>
+    
+   
+     
+    <link href="{% static 'font-awesome.min.css' %}" rel="stylesheet"/>
+     
+    <link href="{% static 'font-awesome-animation.css' %}" rel="stylesheet" />
+     
+    <link href="{% static 'prettyPhoto.css' %}" rel="stylesheet" />
+  <!--  <link href="{% static 'font.css' %}" rel="stylesheet" /> -->
+       
+    <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />-->
+     
+    <link href=" {% static 'style.css' %}" rel="stylesheet" />
+<script src= "{% static 'jquery.min.js' %}"></script>
+	<script src= "{% static 'bootstrap.min.js' %}"></script>
+
+
+<style>
+.css_button {
+    font-family:Arial;
+	font-size: 20px;
+    font-weight: normal;
+    <!-- text-decoration: inherit; -->
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    border: 1px solid #ffffff;
+    padding: 6px 20px;
+    cursor: pointer;
+    color: #FFFFFF;
+    display: inline-block;
+    background-color:#000000;
+	align:center;
+	width:100px;
+	height:35px;
+        margin-left: -4%;
+
+}
+
+.css_button:hover {
+    background-color:;
+}
+
+.css_button:active {
+    position:relative;
+    top: 5px;
+}
+</style>
+
+<style>
+.css_username {
+	width: 300px; 
+	height:40px; 
+	font-size:15px; 
+	border:1px solid #CDCCCC; 
+	background:#FFFFFF; 
+	-webkit-border-radius: 5px 5px 5px 5px; 
+	-moz-border-radius: 5px 5px 5px 5px ; 
+	border-radius: 5px 5px 5px 5px; 
+	float: left; 
+	background: url(C:\\Users\\ADMIN\\Desktop\\2 June\\MAIL_ICON.jpg) 
+	no-repeat scroll 7px 7px; 
+	padding-left:30px; 
+	background-repeat: no-repeat;
+}
+</style>
+
+<style>
+.css_password {
+	width: 300px; 
+	height:40px; 
+	font-size:15px; 
+	border:1px solid #CDCCCC; 
+	background:#FFFFFF; 
+	-webkit-border-radius: 5px 5px 5px 5px; 
+	-moz-border-radius: 5px 5px 5px 5px ; 
+	border-radius: 5px 5px 5px 5px; 
+	float: left; 
+	background: url(C:\\Users\\ADMIN\\Desktop\\password.jpg) 
+	no-repeat scroll 7px 7px; 
+	padding-left:35px; 
+	background-repeat: no-repeat;
+}
+a:active {
+    background-color: #FF704D;
+}
+</style>
+       <style>         
+.a {
+    color:black;
+}
+</style>
+<script>
+history.pushState({ page: 1 }, "title 1", );
+window.onhashchange = function (event) {
+window.location.hash = "Welcome";
+
+};
+</script>
+
+</head>
+<div class="navbar navbar-default navbar-fixed-top menu-back">
+        <div class="container text-left col-md-12">
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 ">
+           <img src="{% static 'tamillogo.png' %}"  class="img-circle " style = "width:80px;height:80px" />
+                
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 " style = "color:white;font-size:18px" >
+                <br>
+				<ul class="nav navbar-nav navbar-left ">
+                   
+              
+			  Location <input type="text" id="address" name="address" value="{{address}}" class="form-control btn round-large" style = "width:150px;font-size:18px" placeholder="Location">
+			  Officername <input type = "text" id="Username" name="Username" value="{{Username}}" class="form-control btn round-large" style = "width:150px;font-size:18px"placeholder="Username">
+              <body onload="startTime()">
+			  <a id="txt" style = "color:white"></a>
+			  </div>
+               <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 " style = "color:white;font-size:18px" >
+			  <br>
+
+			  <a method="post" href="/logout/"  type = "button" class="btn btn-primary mb1 bg-black"  style = " color:#ffffff; background-color: #191919;border-color: #e5e5e5; width:90px;height:40px;font-size:18px">Logout</a>  
+                  </ul>      
+            </div>       
+            </div>
+
+        </div>
+<ul class="nav nav-tabs">
+    <li  style = ""><a data-toggle="tab" href="#tab1">Edit Lane</a></li>
+    <li><a data-toggle="tab" href="#tab2">Signup</a></li>
+    <li><a data-toggle="tab" href="#tab3">Forget Password</a></li>
+   
+  </ul>
+
+ 
+        <br>
+<tr><td>        
+<span><form method="post" action="/sign_up/"   style=font-size:26px;float:left>
+
+<input type="hidden" id="Username" name="Username" value="{{Username}}" ></input>
+<input type="hidden" id="Password" name="Password" value="{{Password}}"></input>
+<input type="submit" value="Signup"  class="btn  btn-primary " style= "color:#ffffff;border-color: #e5e5e5; width:290px;height:40px;font-size:26px"></input>
+</td></span></form>
+
+<span><form method="POST" action="/edit_lane/" style=font-size:26px;float:left>
+<input type="hidden" id="Username" name="Username" value="{{Username}}" ></input>
+<input type="hidden" id="Password" name="Password" value="{{Password}}"></input>
+<input type="submit" value="Edit lane"  class="btn  btn-primary " style= "color:#ffffff;border-color: #e5e5e5; width:290px;height:40px;font-size:26px"></input>
+
+</td></tr></span></form>
+
+<span><form method="POST" action="/edit_lane/" style=font-size:26px;float:left>
+<input type="hidden" id="Username" name="Username" value="{{Username}}" ></input>
+<input type="hidden" id="Password" name="Password" value="{{Password}}"></input>
+<input type="submit" value="Reset Password"  class="btn  btn-primary " style= "color:#ffffff;border-color: #e5e5e5; width:290px;height:40px;font-size:26px"></input>
+
+</td></tr></span></form>
+
+
+
+<body style="font-family:Helvetica;background-color:#F2F2F2; ">
+<center>
+<br>
+
+</body>
+</html>
+ 
